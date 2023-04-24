@@ -1,0 +1,43 @@
+<div class="block border-2 rounded-md">
+    <div class="flex text-left mt-2">
+        <a class="mb-5 ml-5 mr-5 text-xl hover:text-green-500 transition delay-100 font-semibold text-green-300" href="{{path('app_single_post',{id:post.id})}}">
+            {% if post.content|length >50 %} 
+            {{post.title|slice(0,50)}} ...
+            {% else %}
+            {{post.title}}
+            {% endif %}
+        </a>
+    </div> 
+    <div class="flex items-center text-gray-500 h-28 text-normal lg:text-lg mb-5 mx-5 text-justify">
+        <div>
+            {% if post.content|length >100 %} 
+        {{post.content|slice(0,100)}} ...
+            {% else %}
+            {{post.content}}
+            {% endif %}
+        </div>
+            
+    </div>
+    <hr class="b-2 border-gray-300 mx-5">
+    <div class="flex justify-between">
+        <a class="my-2 ml-5 mr-26 bg-gray-800 text-white font-bold p-2 rounded-md hover:bg-green-300 transition delay-100" href="{{path('app_single_post',{id:post.id})}}">Read More...</a>
+        {% if app.user is same as post.author %}
+        <div class="flex gap-5">
+        <a class="my-2 bg-gray-800 text-white font-bold p-2 rounded-md hover:bg-yellow-400 transition delay-100" href="{{ path('app_post_edit', {id:post.id}) }}">Edit</a>
+        <a class="my-2 mr-5 bg-gray-800 text-white font-bold p-2 rounded-md hover:bg-red-400 transition delay-100" href="{{ path('app_post_delete', {id:post.id}) }}">Delete</a>
+        </div>
+        {% elseif app.user%}
+        <div class="flex gap-5">
+            {%if post.likedBy.contains(app.user) %}
+            <a class="my-2 mr-5 bg-gray-800 text-white font-bold p-2 rounded-md hover:bg-red-400 transition delay-100" href="{{ path('app_post_dislike', {id:post.id}) }}">Dislike Post ({{ post.likedBy.count }}) </a>
+            {%else%}
+            <a class="my-2 mr-5 bg-gray-800 text-white font-bold p-2 rounded-md hover:bg-blue-400 transition delay-100" href="{{ path('app_post_like', {id:post.id}) }}">Like Post ({{ post.likedBy.count }}) </a>
+            {%endif%}
+        </div>
+        {% else %}
+        <div class="">
+        <p class="my-2 mr-5 text-white font-bold p-2 rounded-md bg-green-300 transition delay-100">Likes ({{posts|length}}) </p>
+        </div>  
+        {% endif %}
+    </div>
+</div>

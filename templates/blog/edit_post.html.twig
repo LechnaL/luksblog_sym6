@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} - Edit{% endblock %}
+
+{%block body%}
+<div class="m-auto w-4/5 text-center">
+    <div>
+    <h1 class="text-green-300 text-4xl font-bold mb-5">Edit Post</h1>
+    <hr class="b-2 border-gray-300 mb-5">
+{{ form_start(form) }}
+{{ form_row(form.title) }}
+{{ form_row(form.content) }}
+<button type="submit" class="p-2 uppercase transition delay-100 hover:bg-green-600 mt-15 bg-green-300 text-white text-lg w-2/5 mt-10 font-bold rounded-md">Save</button>
+{{ form_end(form) }}
+
+</div>
+</div>
+{% endblock %}

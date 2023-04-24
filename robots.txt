@@ -1,0 +1,9 @@
+Host: http://localhost
+
+Disallow: /adminpanel/
+Disallow: /blog/create
+Disallow: /blog/edit
+Disallow: /blog/delete
+Disallow: /register
+Disallow: /login
+Allow: /

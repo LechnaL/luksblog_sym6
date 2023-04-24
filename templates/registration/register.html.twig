@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} - Register{% endblock %}
+
+{% block body %}
+<div class="m-auto w-4/5 text-center">
+    <div>
+    <h1 class="text-green-300 text-4xl font-bold mb-5">Register</h1>
+    <hr class="b-2 border-gray-300 mb-5">
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="p-2 uppercase transition delay-100 hover:bg-green-600 mt-15 bg-green-300 text-white text-lg w-2/5 mt-10 font-bold rounded-md">Register</button>
+    {{ form_end(registrationForm) }}
+    </div>
+</div>
+{% endblock %}
